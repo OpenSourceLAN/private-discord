@@ -1,3 +1,8 @@
+config.json
+*.js
+*.js.map
+typings/
+
 # Logs
 logs
 *.log

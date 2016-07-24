@@ -1,0 +1,9 @@
+{
+	"guildId": "ID of your server here",
+	"appid": "bot-app-id-here",
+	"appsecret": "bot-secret-here",
+	"authtoken": "bot-auth-token-here",
+	"absoluteUrl": "http://domain.of.this.app",
+	"roleId": "ID of role to add here",
+	"randomStateString": "Replace this value with some garbage by smashing your keyboard"
+}

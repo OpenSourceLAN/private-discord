@@ -1,0 +1,36 @@
+{
+  "name": "private-discord",
+  "version": "1.0.0",
+  "description": "A simple Discord bot to add people to a role",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenSourceLAN/private-discord.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "role",
+    "auth",
+    "login"
+  ],
+  "author": "Chris Holman",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/OpenSourceLAN/private-discord/issues"
+  },
+  "homepage": "https://github.com/OpenSourceLAN/private-discord#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "discord.io": "^1.13.4",
+    "express": "^4.14.0",
+    "hbs": "^4.0.0",
+    "morgan": "^1.7.0",
+    "oauth": "^0.9.14",
+    "request": "^2.74.0"
+  }
+}
