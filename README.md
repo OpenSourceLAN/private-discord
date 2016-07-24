@@ -58,8 +58,9 @@ tsc
 
 6) Run the app
 
-`node index.js`
+`NODE_ENV=production node index.js`
 
-Now visit http://discordauth.lan/login (substituting your configured hostname),
-authorise the bot to access your account and you're golden!
+Now visit your app's URL (in our example, `http://discordauth.lan`),
+authorise the bot to access your account and you'll be added to the role.
+Awesome!
 

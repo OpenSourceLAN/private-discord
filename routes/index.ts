@@ -17,6 +17,10 @@ var auth = new OAuth2(config.appid,
 var state = config.randomStateString;
 var redirectUri = config.absoluteUrl + '/callback';
 
+router.get('/', (req, res, next) => {
+	res.redirect('/login');
+})
+
 router.get('/login', (req, res, next) => {
 	var authurl = auth.getAuthorizeUrl({
 		redirect_uri: redirectUri,
