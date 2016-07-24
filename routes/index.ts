@@ -91,4 +91,17 @@ router.get('/callback', (req, res, next) => {
 	)
 });
 
+router.get('/roles', (req, res, next) => {
+	request.get({
+		url: `https://discordapp.com/api/guilds/${config.guildId}/roles`,
+		headers: {
+			Authorization: config.authtoken,
+			"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
+		}
+	}, function(e, response, body) {
+		if (e) {console.log(e); return res.status(500).end(e); }
+		res.status(200).end(body);
+	})
+})
+
 module.exports = router;

@@ -1,5 +1,6 @@
 import express = require("express");
 import http = require("http");
+var config = require('./config.json');
 
 //var express = require('express');
 var path = require('path');
@@ -67,4 +68,4 @@ var server = (<any>http).Server(app);
 
 //require("./live/index")(server);
 
-server.listen(3000);
+server.listen(config.listenPort);
