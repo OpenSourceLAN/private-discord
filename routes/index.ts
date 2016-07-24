@@ -2,13 +2,13 @@ import express = require('express');
 import OAuth = require('oauth');
 
 import request = require('request');
-var config = require('../config.json');
+var config: Config.config = require('../config.json');
 
 var OAuth2 = OAuth.OAuth2;
 
 var router = express.Router();
-var auth = new OAuth2(config.appid,
-		config.appsecret,
+var auth = new OAuth2(config.appId,
+		config.appSecret,
 		'https://discordapp.com/api',
 		'/oauth2/authorize',
 		'/oauth2/token',
@@ -58,7 +58,7 @@ router.get('/callback', (req, res, next) => {
 				request({
 					url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 					headers: {
-						Authorization: config.authtoken,
+						Authorization: config.authToken,
 						"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
 					}
 				}, function(e, response, body) {
@@ -74,7 +74,7 @@ router.get('/callback', (req, res, next) => {
 						request.patch({
 							url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 							headers: {
-								Authorization: config.authtoken,
+								Authorization: config.authToken,
 								"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
 							},
 							body: {
@@ -99,7 +99,7 @@ router.get('/roles', (req, res, next) => {
 	request.get({
 		url: `https://discordapp.com/api/guilds/${config.guildId}/roles`,
 		headers: {
-			Authorization: config.authtoken,
+			Authorization: config.authToken,
 			"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
 		}
 	}, function(e, response, body) {

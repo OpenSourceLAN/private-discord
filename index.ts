@@ -1,6 +1,6 @@
 import express = require("express");
 import http = require("http");
-var config = require('./config.json');
+var config: Config.config = require('./config.json');
 
 //var express = require('express');
 var path = require('path');
