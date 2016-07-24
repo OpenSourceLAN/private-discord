@@ -43,6 +43,11 @@ URL, and it is the first number - `discordapp.com/channels/{guildID}/{channelID}
 it easy to get the role ID, you can leave this field empty then visit `/roles`
 on this app (eg, `http://discordauth.lan/roles`) and it will give you a list of
 all roles on the server.
+* `randomStateString` just needs to be a random string. If I was doing this
+properly, this would be stored in the user's cookie or session data and be
+unique per user session. Hard coding this removes some of the security from
+OAuth, so don't use this for nuclear military operations, k? 
+(`// TODO: fix this`)
 * `listenPort` is the TCP port for the HTTP server to listen on.
 
 5) Install app dependencies

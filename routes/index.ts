@@ -17,6 +17,10 @@ var auth = new OAuth2(config.appId,
 var state = config.randomStateString;
 var redirectUri = config.absoluteUrl + '/callback';
 
+request.defaults({ headers: {
+	"User-Agent": "Private-Discord-Bot (https://github.com/opensourcelan/private-discord, 1.0)"
+}})
+
 router.get('/', (req, res, next) => {
 	res.redirect('/login');
 })
@@ -48,8 +52,7 @@ router.get('/callback', (req, res, next) => {
 			request({
 				url: "https://discordapp.com/api/users/@me",
 				headers: {
-					Authorization: "Bearer " + access_token, //access_token
-					"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
+					Authorization: "Bearer " + access_token
 				}
 			}, function(e, response, body) {
 				if (e) { return res.status(500).end("Server failed to look up your user account details :(")}
@@ -58,8 +61,7 @@ router.get('/callback', (req, res, next) => {
 				request({
 					url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 					headers: {
-						Authorization: config.authToken,
-						"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
+						Authorization: config.authToken
 					}
 				}, function(e, response, body) {
 					if (e) { return res.status(500).end() }
@@ -74,8 +76,7 @@ router.get('/callback', (req, res, next) => {
 						request.patch({
 							url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 							headers: {
-								Authorization: config.authToken,
-								"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
+								Authorization: config.authToken
 							},
 							body: {
 								roles: roles
@@ -99,8 +100,7 @@ router.get('/roles', (req, res, next) => {
 	request.get({
 		url: `https://discordapp.com/api/guilds/${config.guildId}/roles`,
 		headers: {
-			Authorization: config.authToken,
-			"User-Agent": "SquidsBot (http://github.com/sirsquidness, 1.0beta)"
+			Authorization: config.authToken
 		}
 	}, function(e, response, body) {
 		if (e) {console.log(e); return res.status(500).end(e); }
