@@ -57,6 +57,7 @@ The app depends on a few things. They must be installed!
 ```
 npm install --global typescript@1.8
 npm install --global typings
+npm install
 typings install
 tsc
 ```
