@@ -55,19 +55,18 @@ router.get('/callback', (req, res, next) => {
 					Authorization: "Bearer " + access_token
 				}
 			}, function(e, response, body) {
-				if (e) { return res.status(500).end("Server failed to look up your user account details :(")}
+				if (e || response.statusCode != 200 ) { return res.status(500).end("Server failed to look up your user account details :(")}
 				var user: any = JSON.parse(body);
-				console.log(user);
+				console.log("user", user);
 				request({
-					url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
+					url:  `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 					headers: {
-						Authorization: config.authToken
+						Authorization: "Bot "+ config.authToken
 					}
 				}, function(e, response, body) {
-					if (e) { return res.status(500).end() }
-
+					if (e || response.statusCode != 200) {  console.log("Failed to get guild member", "error code", response.statusCode);  res.status(500).write("Couldn't fetch guild info"); return res.end()}
 					var guildMember: any = JSON.parse(body);
-					console.log(guildMember);
+					console.log("guildMember", guildMember);
 					var roles: string[] = guildMember.roles;
 					if (roles.indexOf(config.roleId) === -1) {
 						roles.push(config.roleId);
@@ -76,14 +75,14 @@ router.get('/callback', (req, res, next) => {
 						request.patch({
 							url: `https://discordapp.com/api/guilds/${config.guildId}/members/${user.id}`,
 							headers: {
-								Authorization: config.authToken
+								Authorization: "Bot " + config.authToken
 							},
 							body: {
 								roles: roles
 							},
 							json: true
 						}, function(e, response, body) {
-							if (e) {console.log(e); return res.status(500).end(e); }
+							if (e || response.statusCode != 204 ) {console.log(e, response.statusCode); return res.status(500).end(e); }
 							res.status(200).end("Success!");
 						})
 					} else {

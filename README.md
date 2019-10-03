@@ -19,7 +19,7 @@ must be accessible to anyone who should be able to use this app.
 Visit [the app registration page](https://discordapp.com/developers/applications/me)
 and add a new bot. Give it a name, this is what it appears as in the user list.
 Add a `Redirect URI` that points to `{url_of_app}/callback` - using the example
-from step 1, we would put `http://discordauth.lan/callback`.
+from step 1, we would put `http://discordauth.lan/callback`. Make sure to click the "Add bot user" button too.
 
 3) Add the bot to your server
 
